@@ -2,13 +2,6 @@ import { Request, Response } from "express"
 import DB from "../config/db"
 import { Student } from "../@types/student";
 import { Jsend, JsendStatus } from "../utils/Jsend";
-import { z } from "zod";
-
-
-const paginationSchema = z.object({
-    limit: z.coerce.number().int().min(1).optional(),
-    page: z.coerce.number().int().min(1).optional()
-}).strict()
 
 export async function getAllStudents(req: Request, res: Response) {
     const l = req.query.limit;
@@ -31,7 +24,6 @@ export async function getAllStudents(req: Request, res: Response) {
     res.status(200).send(response);
 };
 
-
 export async function getStudentByID(req: Request<{ studentID: Student["id"] }>, res: Response) {
     const studentID = +req.params.studentID;
     const [rows] = await DB.query("SELECT * FROM students WHERE students.id = ?", [studentID]);
@@ -45,13 +37,11 @@ export async function getStudentByID(req: Request<{ studentID: Student["id"] }>,
     res.status(200).send(new Jsend(JsendStatus.SUCCESS, student));
 };
 
-
 export async function createStudent(req: Request<{}, {}, Omit<Student, "id">>, res: Response) {
     let body = req.body;
     const [rows] = await DB.query("INSERT INTO students VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Object.values(body));
     res.status(201).send(new Jsend(JsendStatus.SUCCESS, [body], "Student created successfuly"))
 }
-
 
 export async function updateStudent(req: Request<{ studentID: Student["id"] }, {}, Partial<Omit<Student, "id">>>, res: Response) {
     const studentID = req.params.studentID;
@@ -71,7 +61,6 @@ export async function updateStudent(req: Request<{ studentID: Student["id"] }, {
         res.status(500).send(err)
     }
 }
-
 
 export async function deleteStudent(req: Request<{ studentID: number }>, res: Response) {
     const studentID = +req.params.studentID;
