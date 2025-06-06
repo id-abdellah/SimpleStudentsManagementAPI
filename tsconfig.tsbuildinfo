@@ -1,0 +1,1 @@
+{"root":["./src/index.ts","./src/@types/student.d.ts","./src/config/db.ts","./src/controllers/students.controller.ts","./src/middlewares/student.middleware.ts","./src/routes/students.route.ts","./src/utils/jsend.ts"],"version":"5.8.3"}
