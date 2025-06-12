@@ -12,6 +12,6 @@ app.use((error: any, req: Request, res: Response, next: NextFunction) => {
     res.status(500).send(new Jsend(JsendStatus.ERROR, null, "Internal Server Error"))
 })
 
-app.listen(8080, "localhost", (err) => {
+app.listen(8080, "localhost", () => {
     console.log("Running on: http://localhost:8080")
 })
