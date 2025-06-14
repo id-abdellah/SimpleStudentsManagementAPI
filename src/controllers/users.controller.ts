@@ -4,6 +4,7 @@ import { Jsend, JsendStatus } from "../utils/Jsend";
 import { User } from "../@types/user";
 import bcrypt from "bcrypt"
 import { ColumnsSchema, filterColumns } from "../utils/dbUtils";
+import jwt from "jsonwebtoken"
 
 class UsersController {
 
@@ -47,7 +48,11 @@ class UsersController {
             res.status(401).send("invalid password")
             return;
         }
-        res.send(`Logged in`)
+
+        const secretKey = process.env.JWT_SECRET_KEY as string;
+        const token = jwt.sign({ email }, secretKey);
+
+        res.send(`user logged in under toke: ${token}`)
     }
 }
 

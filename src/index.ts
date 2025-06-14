@@ -1,7 +1,10 @@
 import express, { NextFunction, Request, Response } from "express"
-import { studentsRouter } from "./routes/students.route";
-import { Jsend, JsendStatus } from "./utils/Jsend";
-import { usersRouter } from "./routes/users.route";
+import { studentsRouter } from "./routes/students.route"
+import { Jsend, JsendStatus } from "./utils/Jsend"
+import { usersRouter } from "./routes/users.route"
+import dotenv from "dotenv"
+
+dotenv.config()
 
 const app = express();
 
