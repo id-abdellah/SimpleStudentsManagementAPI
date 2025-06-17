@@ -9,12 +9,12 @@ router.get("/", auth, getAllStudents)
 
 router.get("/:studentID", auth, getStudentByID)
 
-router.post("/", validateStudent, createStudent)
+router.post("/", auth, validateStudent, createStudent)
 
-router.patch("/:studentID", isStudentExist, validateUpdateStudentBody, updateStudent)
+router.patch("/:studentID", auth, isStudentExist, validateUpdateStudentBody, updateStudent)
 
-router.delete("/:studentID", isStudentExist, deleteStudent)
+router.delete("/:studentID", auth, isStudentExist, deleteStudent)
 
-router.delete("/", deleteAllStudents)
+router.delete("/", auth, deleteAllStudents)
 
 export { router as studentsRouter };
