@@ -1,1 +1,18 @@
-{"root":["./src/index.ts","./src/@types/student.d.ts","./src/@types/user.d.ts","./src/config/db.ts","./src/controllers/students.controller.ts","./src/controllers/users.controller.ts","./src/middlewares/auth.middleware.ts","./src/middlewares/student.middleware.ts","./src/middlewares/user.middleware.ts","./src/routes/students.route.ts","./src/routes/users.route.ts","./src/utils/jsend.ts","./src/utils/dbutils.ts"],"version":"5.8.3"}
+{
+    "root": [
+        "./src/index.ts",
+        "./src/@types/student.d.ts",
+        "./src/@types/user.d.ts",
+        "./src/config/db.ts",
+        "./src/controllers/students.controller.ts",
+        "./src/controllers/users.controller.ts",
+        "./src/middlewares/auth.middleware.ts",
+        "./src/middlewares/student.middleware.ts",
+        "./src/middlewares/user.middleware.ts",
+        "./src/routes/students.route.ts",
+        "./src/routes/users.route.ts",
+        "./src/utils/jsend.ts",
+        "./src/utils/dbutils.ts"
+    ],
+    "version": "5.8.3"
+}

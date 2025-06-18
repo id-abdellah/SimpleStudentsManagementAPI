@@ -27,7 +27,10 @@ class UsersController {
     async register(req: Request<{}, {}, Omit<User, "id">>, res: Response) {
         const { email, password, username } = req.body;
         const hashedPassword = await bcrypt.hash(password, 10);
-        await DB.query("INSERT INTO users VALUES (DEFAULT, ?, ?, ?)", [username, email, hashedPassword]);
+
+        const avatar = (req.file && req.file.filename) || "default.jpg";
+
+        await DB.query("INSERT INTO users VALUES (DEFAULT, ?, ?, ?, ?)", [username, email, hashedPassword, avatar]);
         res.status(201).send(new Jsend(JsendStatus.SUCCESS, req.body, "created successfuly"))
     }
 
